@@ -16,6 +16,8 @@ RUN bundle install --without development test
 ADD . /app
 WORKDIR /app
 
+RUN bundle exec rake assets:precompile
+
 EXPOSE 8080
 VOLUME ["/app/log"]
 CMD ["bundle", "exec", "puma", "-p", "8080"]
