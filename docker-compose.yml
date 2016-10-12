@@ -1,0 +1,14 @@
+version: '2'
+services:
+  web:
+    build: .
+    restart: always
+    container_name: nre
+    ports:
+      - 8080:8080
+    volumes:
+      - /log:/app/log
+    environment:
+      - RAILS_ENV=production
+      - NEO4J_URL=${NEO4J_URL}
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
