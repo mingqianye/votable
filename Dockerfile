@@ -16,5 +16,6 @@ RUN bundle install --without development test
 ADD . /app
 WORKDIR /app
 
-CMD ["bundle", "exec", "puma", "-p", "8080"]
 EXPOSE 8080
+VOLUME ["/app/log"]
+CMD ["bundle", "exec", "puma", "-p", "8080"]
