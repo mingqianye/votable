@@ -4,7 +4,7 @@ MAINTAINER mingqian.ye@gmail.com
 RUN echo "Image name: votable"
 
 RUN apt-get update
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs less vim
 
 WORKDIR /tmp
 ADD Gemfile Gemfile
@@ -16,6 +16,7 @@ RUN bundle install --without development test
 ADD . /app
 WORKDIR /app
 
+ENV RAILS_ENV production
 RUN bundle exec rake assets:precompile
 
 EXPOSE 8080
