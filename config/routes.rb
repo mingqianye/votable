@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'landings#index'
+  root to: 'landing#index'
+  namespace :admin do
+    get '/', to: 'dashboard#index'
+  end
 end

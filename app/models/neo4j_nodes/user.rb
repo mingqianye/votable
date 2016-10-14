@@ -9,4 +9,5 @@ class User < NodeBase
   property :city,       type: String
   property :avatar_url, type: String
   property :nick_name,  type: String
+  property :last_seen,  type: DateTime
 end
