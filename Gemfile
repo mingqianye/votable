@@ -5,6 +5,7 @@ gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier'
 gem 'neo4j'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -1,17 +1,5 @@
-<%= form_for @survey, url: admin_surveys_path do |f| %>
-  <p> Question 1 </p>
-  <%= f.fields_for :questions do |ff| %>
-    <fieldset>
-      <%= ff.label :text, 'Question' %>
-      <%= ff.text_area :text %>
-      <%= ff.fields_for :questions do |fff| %>
-        <fieldset>
-          <%= ff.label :text, 'Answer' %>
-          <%= ff.text_area :text %>
-        </fieldset>
-      <% end %>
-    </fieldset>
-  <% end %>
-
-  <%= f.submit 'Create' %>
+<%= form_tag admin_surveys_path do %>
+  <%= text_area_tag :survey, @survey.as_json, size: "150x40" %>
+  <%= tag :br %>
+  <%= submit_tag %>
 <% end %>

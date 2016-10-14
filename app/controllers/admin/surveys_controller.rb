@@ -2,7 +2,7 @@ class Admin::SurveysController < ApplicationController
   def index
   end
   def new
-    @survey = Survey.new
+    @survey = {}
   end
 
   def create
