@@ -6,7 +6,7 @@
       <h2><%= pluralize(@template.errors.count, "error") %> prohibited this template from being saved:</h2>
 
       <ul>
-      <% @template.errors.full_messages.each do |message| %>
+      <% @template.errors.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

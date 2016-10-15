@@ -17,12 +17,13 @@ class Admin::SurveyTemplatesController < ApplicationController
 
   # POST /admin/survey_templates
   def create
-    survey = SurveyStoreServie.new.store(admin_survey_template_params)
-    @template = Admin::SurveyTemplate.new(survey)
+    survey_hash = JSON.parse(survey_params)
+    @template = Admin::SurveyTemplate.new(survey_params)
 
-    if @template.save
-      redirect_to @template, notice: 'Survey template was successfully created.'
+    if SurveyStoreService.new.store(survey_hash)
+      redirect_to admin_survey_templates_url, notice: 'Survey template was successfully created.'
     else
+      @template.errors << 'Unable to store survey'
       render :new
     end
   end
@@ -30,7 +31,7 @@ class Admin::SurveyTemplatesController < ApplicationController
   # PATCH/PUT /admin/survey_templates/1
   def update
     if @template.update(admin_survey_template_params)
-      redirect_to @template, notice: 'Survey template was successfully updated.'
+      redirect_to admin_survey_templates_url, notice: 'Survey template was successfully updated.'
     else
       render :edit
     end
@@ -38,7 +39,7 @@ class Admin::SurveyTemplatesController < ApplicationController
 
   # DELETE /admin/survey_templates/1
   def destroy
-    @template.destroy
+    Survey.find(params[:id]).destroy
     redirect_to admin_survey_templates_url, notice: 'Survey template was successfully destroyed.'
   end
 
@@ -50,7 +51,7 @@ class Admin::SurveyTemplatesController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
-    def admin_survey_template_params
-      params.fetch(:admin_survey_template, {})
+    def survey_params
+      params.fetch(:survey, {})
     end
 end
