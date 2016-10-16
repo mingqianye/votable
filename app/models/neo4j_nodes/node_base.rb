@@ -4,7 +4,7 @@ class NodeBase
 
   def self.upkeep(instance)
     raise 'Cannot call upkeep on base class' if instance.class == NodeBase
-    raise 'Cannot upkeep if nothing_id is missing' if attrs['id'].blank?
+    raise 'Cannot upkeep if nothing_id is missing' if attrs['uuid'].blank?
     attrs = instance.attributes.compact
     entity = find_or_create(id: attrs['id'])
     entity.assign_attributes(attrs)
@@ -17,6 +17,6 @@ class NodeBase
   end
 
   def data_attributes
-    attributes.except('updated_at', 'created_at')
+    attributes.except('updated_at', 'created_at').merge('uuid' => uuid)
   end
 end
