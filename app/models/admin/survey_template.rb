@@ -14,12 +14,12 @@ class Admin::SurveyTemplate
 
   private
   def new_content
-    JSON.pretty_generate(new_survey)
+    JSON.pretty_generate(SurveySerializer.serialize(new_survey))
   end
 
   def new_survey
     q = Question.new(text: 'question 1 text')
-    q.answers << Answer.new(label: 'A', text: 'answer A text')
+    q.answers << Answer.new(text: 'answer A text')
     survey = Survey.new(title: 'Survey title')
     survey.questions << q
     survey

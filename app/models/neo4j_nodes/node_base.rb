@@ -15,8 +15,4 @@ class NodeBase
   def upkeep
     self.class.upkeep(self)
   end
-
-  def data_attributes
-    attributes.except('updated_at', 'created_at').merge('uuid' => uuid)
-  end
 end

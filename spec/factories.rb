@@ -1,8 +1,4 @@
 FactoryGirl.define do
-  sequence :uuid do |n|
-    "uuid_#{n}"
-  end
-
   factory :survey do
     title "my survey title"
     after :build do |survey|
@@ -20,7 +16,6 @@ FactoryGirl.define do
   end
 
   factory :answer do
-    label "A"
     text "my answer text"
     after :build do |answer|
       allow(answer).to receive(:uuid) { 'answer1' }
