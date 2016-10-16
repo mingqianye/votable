@@ -11,7 +11,6 @@ RSpec.describe SurveySerializer do
         'text' => 'my question text',
         'answers' => [{
           'uuid' => 'answer1',
-          'label' => 'A',
           'text'  => 'my answer text'
         }],
       }]
