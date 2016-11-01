@@ -20,7 +20,7 @@ class Admin::SurveyTemplatesController < ApplicationController
     survey_hash = JSON.parse(survey_params)
     @template = Admin::SurveyTemplate.new(survey_params)
 
-    if SurveyStoreService.new(survey_hash).create
+    if SurveyStoreService.new(survey_hash).create_or_update
       redirect_to admin_survey_templates_url, notice: 'Survey template was successfully created.'
     else
       @template.errors << 'Unable to store survey'
@@ -32,7 +32,7 @@ class Admin::SurveyTemplatesController < ApplicationController
   def update
     survey_hash = JSON.parse(survey_params)
     @template = Admin::SurveyTemplate.new(survey_params)
-    if SurveyStoreService.new(survey_hash).create
+    if SurveyStoreService.new(survey_hash).create_or_update
       redirect_to admin_survey_templates_url, notice: 'Survey template was successfully updated.'
     else
       render :edit
