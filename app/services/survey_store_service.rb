@@ -1,7 +1,10 @@
 class SurveyStoreService
-  def initialize
+  def initialize(hash)
+    @hash = hash
   end
 
-  def store(hash)
+  def store
+    
   end
+
 end

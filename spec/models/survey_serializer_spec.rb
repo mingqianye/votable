@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe SurveySerializer do
   let(:survey) { build(:survey) }
+
   it 'serialize the survey object' do
     expect(SurveySerializer.serialize(survey)).to eq({
       'uuid'  => 'survey1',
