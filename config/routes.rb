@@ -6,5 +6,10 @@ Rails.application.routes.draw do
     #get 'survey_templates' => 'survey_templates#index'
     get '/', to: 'dashboard#index'
   end
+
+  get 'api/landing' => 'api#landing'
+  get 'api/show_survey' => 'api#show_survey'
+  get 'api/submit_vote' => 'api#submit_vote'
+
   root to: 'landing#index'
 end
