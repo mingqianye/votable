@@ -9,12 +9,12 @@ class Admin::SurveyTemplate
   end
 
   def content
-    @content || new_content
+    JSON.pretty_generate(@content || new_content)
   end
 
   private
   def new_content
-    JSON.pretty_generate(SurveySerializer.serialize(new_survey))
+    SurveySerializer.serialize(new_survey)
   end
 
   def new_survey

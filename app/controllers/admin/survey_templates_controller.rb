@@ -20,7 +20,7 @@ class Admin::SurveyTemplatesController < ApplicationController
     survey_hash = JSON.parse(survey_params)
     @template = Admin::SurveyTemplate.new(survey_params)
 
-    if SurveyStoreService.new.store(survey_hash)
+    if SurveyStoreService.new(survey_hash).create
       redirect_to admin_survey_templates_url, notice: 'Survey template was successfully created.'
     else
       @template.errors << 'Unable to store survey'
@@ -30,7 +30,9 @@ class Admin::SurveyTemplatesController < ApplicationController
 
   # PATCH/PUT /admin/survey_templates/1
   def update
-    if @template.update(admin_survey_template_params)
+    survey_hash = JSON.parse(survey_params)
+    @template = Admin::SurveyTemplate.new(survey_params)
+    if SurveyStoreService.new(survey_hash).create
       redirect_to admin_survey_templates_url, notice: 'Survey template was successfully updated.'
     else
       render :edit
@@ -47,7 +49,8 @@ class Admin::SurveyTemplatesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_survey_template
       survey = Survey.find(params[:id])
-      @template = Admin::SurveyTemplate.new(survey)
+      hash = SurveySerializer.serialize(survey)
+      @template = Admin::SurveyTemplate.new(hash)
     end
 
     # Only allow a trusted parameter "white list" through.
