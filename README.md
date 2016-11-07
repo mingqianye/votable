@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+* Build and push votable api to docker hub
+1. run: ./push_to_dockerhub.sh
 
-* System dependencies
+* Provision a machine (named sfo) using docker-machine *
+1. add ssh key to remote machine root.
+2. docker-machine create --driver generic --generic-ip-address=138.68.25.77 --generic-ssh-key ~/.ssh/id_rsa sfo
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Run the votable-api and neo4j in production
+1. docker-machine env sfo
+2. docker-compose up -d
