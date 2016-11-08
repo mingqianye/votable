@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     #get 'survey_templates'
     #get 'survey_templates/new' => 'survey_templates#new'
     #get 'survey_templates' => 'survey_templates#index'
-    get '/', to: 'dashboard#index'
+    get '/', to: 'survey_templates#index'
   end
 
   get 'api/landing' => 'api#landing'

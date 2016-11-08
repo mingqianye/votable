@@ -16,9 +16,9 @@ RUN bundle install --without development test
 ADD . /app
 WORKDIR /app
 
+ENV RAILS_SERVE_STATIC_FILES true
 ENV RAILS_ENV production
-RUN bundle exec rake assets:precompile
 
 EXPOSE 8080
 VOLUME ["/app/log"]
-CMD ["bundle", "exec", "puma", "-p", "8080"]
+CMD ["sh", "-c", "bundle exec rake assets:precompile && bundle exec puma -p 8080"]

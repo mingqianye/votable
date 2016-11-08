@@ -8,6 +8,8 @@ services:
       - 8080:8080
     depends_on:
       - neo4j
+    links:
+      - neo4j
     volumes:
       - /log:/app/log
   neo4j:

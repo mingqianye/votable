@@ -3,6 +3,7 @@ class Admin::SurveyTemplatesController < ApplicationController
 
   # GET /admin/survey_templates
   def index
+    @dashboard = Admin::Dashboard.new
     @surveys = Survey.all
   end
 

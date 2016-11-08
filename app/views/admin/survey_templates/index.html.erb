@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Admin Survey Templates</h1>
+<div>Total Users: <%= @dashboard.users %> </div>
+<div>Total surveys: <%= @dashboard.surveys %> </div>
+
+<%= tag :hr %>
+
+<%= link_to 'New Admin Survey Template', new_admin_survey_template_path %>
+
+<%= tag :br %>
 
 <table>
   <thead>
@@ -18,7 +25,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Admin Survey Template', new_admin_survey_template_path %>
