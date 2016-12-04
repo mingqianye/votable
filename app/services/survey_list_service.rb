@@ -4,6 +4,6 @@ class SurveyListService
 
   def list
     surveys = LandingSurveysQuery.new.surveys
-    surveys.map{|s| SurveyPresenter.new(s).to_hash}
+    surveys.map{|s| SurveyPresenter.new(s).to_h}
   end
 end

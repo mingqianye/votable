@@ -3,14 +3,23 @@ class SurveyPresenter
     @survey = survey
   end
 
-  def to_hash
+  def to_h
     {
       id: id,
       title: title,
       subtitle: subtitle,
       total_num_votes: total_num_votes,
       updated_at: updated_at,
+      topic: topic,
       user_info: user_info
+    }
+  end
+
+  private
+  def topic
+    {
+      icon_url: 'https://qph.ec.quoracdn.net/main-thumb-2609281-200-fxgbotgjrzbyzvspikzhsdavmcnxswdf.jpeg',
+      text: '体育'
     }
   end
 
