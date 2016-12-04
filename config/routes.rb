@@ -7,9 +7,11 @@ Rails.application.routes.draw do
     get '/', to: 'survey_templates#index'
   end
 
-  get 'api/landing' => 'api#landing'
-  get 'api/show_survey' => 'api#show_survey'
-  get 'api/submit_vote' => 'api#submit_vote'
+  namespace 'api' do
+    get 'landing'
+    get 'show_survey'
+    get 'submit_vote'
+  end
 
   root to: 'landing#index'
 end

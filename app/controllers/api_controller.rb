@@ -1,7 +1,7 @@
 class ApiController < ApplicationController
   def landing
     list = SurveyListService.new.list
-    render json: ResponseFactory.build(list)
+    render json: ResponseFactory.build({ surveys: list })
   end
 
   def show_survey
