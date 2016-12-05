@@ -1,6 +1,6 @@
 class User < NodeBase
   has_many :out, :surveys, type: 'CREATED_SURVEY', unique: true
-  has_many :out, :answers, type: 'VOTED_FOR', unique: true
+  has_many :out, :answers, rel_class: :Vote, model_class: :Answer
 
   property :wechat_id,  type: String, index: :exact
   property :gender,     type: String #['M', 'F']

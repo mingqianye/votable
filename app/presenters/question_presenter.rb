@@ -13,6 +13,10 @@ class QuestionPresenter
 
   private
   def answers
-    @question.answers.map{|a| AnswerPresenter.new(a).to_h}
+    @question.answers.map{|a| AnswerPresenter.new(a, total_votes).to_h}
+  end
+
+  def total_votes
+    @total_votes ||= @question.answers.voters.count
   end
 end
