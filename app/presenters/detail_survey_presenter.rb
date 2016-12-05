@@ -9,6 +9,6 @@ class DetailSurveyPresenter < SimpleSurveyPresenter
 
   private
   def questions
-    @survey.questions.map{|q| QuestionPresenter.new(q).to_h}
+    @survey.questions.with_associations(:answers).map{|q| QuestionPresenter.new(q).to_h}
   end
 end
