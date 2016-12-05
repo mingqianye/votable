@@ -18,7 +18,7 @@ class AnswerPresenter
     @num_votes ||= @answer.voters.count
   end
   def percent_votes
-    return 0 if @total_votes == 0
+    return nil if @total_votes == 0
     num_votes / @total_votes
   end
 end
