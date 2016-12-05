@@ -12,7 +12,7 @@ class SurveyStoreService
         question.update_attributes(text: q['text'])
         q['answers'].each do |a|
           answer = Answer.find_by_id(a['uuid']) || Answer.create
-          answer.update_attributes(text: a['text'])
+          answer.update_attributes(text: a['text'], label: a['label'])
           question.answers << answer
         end
         survey.questions << question

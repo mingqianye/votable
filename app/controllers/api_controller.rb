@@ -5,7 +5,8 @@ class ApiController < ApplicationController
   end
 
   def show_survey
-    render json: ResponseFactory.build({})
+    survey_detail = DisplaySurveyService.new(params[:survey_id]).display
+    render json: ResponseFactory.build({ survey: survey_detail })
   end
 
   def submit_vote

@@ -1,4 +1,4 @@
-class SurveyPresenter
+class SimpleSurveyPresenter
   def initialize(survey)
     @survey = survey
   end

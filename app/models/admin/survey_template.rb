@@ -19,7 +19,7 @@ class Admin::SurveyTemplate
 
   def new_survey
     q = Question.new(text: 'question 1 text')
-    q.answers << Answer.new(text: 'answer A text')
+    q.answers << Answer.new(text: 'answer A text', label: 'A')
     survey = Survey.new(title: 'Survey title', subtitle: 'Survey subtitle')
     survey.questions << q
     survey
