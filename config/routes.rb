@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace 'api' do
     get 'landing'
     get 'show_survey'
-    get 'submit_vote'
+    post 'submit_vote'
   end
 
   root to: 'landing#index'

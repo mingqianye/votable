@@ -1,4 +1,6 @@
 class ApiController < ApplicationController
+  protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
+
   def landing
     list = SurveyListService.new.list
     render json: ResponseFactory.build({ surveys: list })
@@ -10,10 +12,12 @@ class ApiController < ApplicationController
   end
 
   def submit_vote
-    render json: ResponseFactory.build({})
+    result = VoteService.new(params).result
+    render json: ResponseFactory.build({ result: result })
   end
 
   private
+
   rescue_from StandardError do |exception|
     resp = {
       message: exception.message,
